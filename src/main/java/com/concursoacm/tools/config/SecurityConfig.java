@@ -31,8 +31,7 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         // Agrega los orígenes permitidos
-        configuration.setAllowedOriginPatterns(Arrays.asList("http://localhost:8080", "http://127.0.0.1:5500",
-                "https://apiconcursoacm-production.up.railway.app"));
+        configuration.setAllowedOriginPatterns(Arrays.asList("https://concurso-acm.netlify.app"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
         configuration.setAllowCredentials(true);
