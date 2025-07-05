@@ -8,6 +8,7 @@ public class RespuestaDTO {
     private int idParticipante;
     private int idPregunta;
     private String respuestaParticipante;
+    private int puntuacionObtenida;
 
     public RespuestaDTO() {
     }
@@ -17,6 +18,7 @@ public class RespuestaDTO {
         this.idParticipante = respuesta.getParticipante().getIdParticipante();
         this.idPregunta = respuesta.getPregunta().getIdPregunta();
         this.respuestaParticipante = respuesta.getRespuestaParticipante();
+        this.puntuacionObtenida = respuesta.getPuntuacionObtenida();
     }
 
     // Getters y setters
@@ -50,5 +52,13 @@ public class RespuestaDTO {
 
     public void setIdParticipante(int idParticipante) {
         this.idParticipante = idParticipante;
+    }
+
+    public int getPuntuacionObtenida() {
+        return puntuacionObtenida;
+    }
+
+    public void setPuntuacionObtenida(int puntuacionObtenida) {
+        this.puntuacionObtenida = puntuacionObtenida;
     }
 }

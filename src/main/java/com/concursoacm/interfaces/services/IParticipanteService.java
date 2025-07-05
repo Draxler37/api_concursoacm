@@ -106,4 +106,20 @@ public interface IParticipanteService {
      * @return Lista de ParticipanteDTO que cumplen los criterios
      */
     List<ParticipanteDTO> buscarParticipantes(String nombre, Integer idPais, Integer idEquipo, Integer idRegion);
+
+    /**
+     * *Obtiene el ID de un participante por su nombre.
+     * 
+     * @param nombre Nombre del participante a buscar
+     * @return ID del participante o null si no se encuentra
+     */
+    Integer obtenerIdPorNombre(String nombre);
+
+    /**
+     * * Obtiene los participantes que no están asignados a ningún equipo por el idpais.
+     * 
+     * @param idPais ID del país para filtrar los participantes sin equipo.
+     * @return Lista de ParticipanteDTO sin equipo asignado.
+     */
+    List<ParticipanteDTO> getParticipantesSinEquipoPorPais(int idPais);
 }

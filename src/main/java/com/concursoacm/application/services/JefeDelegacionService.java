@@ -240,4 +240,14 @@ public class JefeDelegacionService implements IJefeDelegacionService {
                 .orElseThrow(
                         () -> new IllegalArgumentException("El jefe de delegación con ID " + idJefe + " no existe."));
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Integer obtenerIdPaisPorNombre(String nombre) {
+        return jefeDelegacionRepository.obtenerIdPaisPorNombreUsuario(nombre)
+                .orElseThrow(() -> new IllegalArgumentException(
+                        "Jefe de delegación no encontrado con el nombre: " + nombre));
+    }
 }

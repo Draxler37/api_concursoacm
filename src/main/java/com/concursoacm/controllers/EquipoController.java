@@ -133,7 +133,7 @@ public class EquipoController {
 
     /**
      * *Búsqueda flexible de equipos por nombre, país y/o categoría.
-     * Todos los parámetros son opcionales.
+     * 
      */
     @GetMapping("/buscar")
     public ResponseEntity<List<EquipoDTO>> buscarEquipos(

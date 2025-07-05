@@ -47,7 +47,7 @@ public class JefeDelegacionController {
 
     /**
      * *Obtiene una lista de todos los jefes de delegación con país y región para
-     * filtrado frontend.
+     * *filtrado frontend.
      * 
      * @return Lista de objetos JefeDelegacionFiltroDTO.
      */
@@ -134,5 +134,20 @@ public class JefeDelegacionController {
             @RequestParam(required = false) Integer idRegion) {
         List<JefeDelegacionFiltroDTO> jefes = jefeDelegacionService.buscarJefesDelegacion(nombre, idPais, idRegion);
         return ResponseEntity.ok(jefes);
+    }
+
+    /**
+     * *Endpoint para obtener el idPais de un jefe de delegación por su nombre.
+     * @param nombre Nombre del jefe de delegación.
+     * @return ID del país asociado al jefe de delegación o null si no se encuentra.
+     */
+    @GetMapping("/pais")
+    public ResponseEntity<Integer> obtenerIdPaisPorNombre(@RequestParam String nombre) {
+        Integer idPais = jefeDelegacionService.obtenerIdPaisPorNombre(nombre);
+        if (idPais != null) {
+            return ResponseEntity.ok(idPais);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

@@ -79,6 +79,17 @@ public class RespuestaService implements IRespuestaService {
     }
 
     /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<RespuestaDTO> getTodasLasRespuestas() {
+        List<Respuesta> respuestas = respuestaRepository.findAll();
+        return respuestas.stream()
+                .map(RespuestaDTO::new)
+                .collect(Collectors.toList());
+    }
+
+    /**
      * *Valida si un participante existe y tiene un equipo asignado.
      *
      * @param idParticipante ID del participante.
@@ -130,8 +141,8 @@ public class RespuestaService implements IRespuestaService {
     public boolean calificarRespuesta(int idRespuesta, int puntuacion) {
         Respuesta respuesta = respuestaRepository.findById(idRespuesta)
                 .orElseThrow(() -> new IllegalArgumentException("No se encuentra la respuesta con ID " + idRespuesta));
-        
-                // Validar que la nota esté en el rango permitido
+
+        // Validar que la nota esté en el rango permitido
         if (puntuacion < 0 || puntuacion > 100) {
             throw new IllegalArgumentException("La nota debe estar entre 0 y 100.");
         }

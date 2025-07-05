@@ -328,4 +328,32 @@ public class ParticipanteService implements IParticipanteService {
                 .map(jefe -> jefe.getParticipante().getPais().getNombrePais())
                 .orElseThrow(() -> new SecurityException(Constantes.ERROR_USUARIO_NO_ENCONTRADO));
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Integer obtenerIdPorNombre(String nombre) {
+        return participanteRepository.findIdByNombreIgnoreCaseAndNotJefeDelegacion(nombre)
+                .orElseThrow(() -> new IllegalArgumentException(
+                        "No existe un participante con el nombre: " + nombre + " o es jefe de delegación."));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<ParticipanteDTO> getParticipantesSinEquipoPorPais(int idPais) {
+        paisRepository.findById(idPais)
+                .orElseThrow(() -> new IllegalArgumentException("El país con ID " + idPais + " no existe."));
+
+        List<Participante> participantesSinEquipo = participanteRepository
+                .findByPaisIdPaisAndEquipoIsNull(idPais);
+
+        return participantesSinEquipo.stream()
+                .map(this::convertirAParticipanteDTO)
+                .collect(Collectors.toList());
+    }
+
+
 }

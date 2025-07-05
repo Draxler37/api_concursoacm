@@ -35,4 +35,11 @@ public interface IRespuestaService {
      * @return true si se actualizó correctamente.
      */
     boolean calificarRespuesta(int idRespuesta, int puntuacion);
+
+    /**
+     * *Obtiene todas las respuestas de los participantes
+     * 
+     * @return Lista de Respuesta
+     */
+    List<RespuestaDTO> getTodasLasRespuestas();
 }

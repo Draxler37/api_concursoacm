@@ -93,7 +93,7 @@ public class PreguntaController {
     }
 
     /**
-     * Obtiene todas las clases de preguntas.
+     * *Obtiene todas las clases de preguntas.
      *
      * @return Lista de clases de preguntas.
      */

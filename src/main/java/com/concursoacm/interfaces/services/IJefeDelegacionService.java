@@ -73,4 +73,12 @@ public interface IJefeDelegacionService {
      * @return Lista de JefeDelegacionFiltroDTO filtrados
      */
     List<JefeDelegacionFiltroDTO> buscarJefesDelegacion(String nombre, Integer idPais, Integer idRegion);
+
+    /**
+     * * Obtiene el idpais de un jefe de delegación por su nombre.
+     * 
+     * @param nombre Nombre del jefe de delegación.
+     * @return ID del país del jefe de delegación si existe, vacío en caso contrario.
+     */
+    Integer obtenerIdPaisPorNombre(String nombre);
 }

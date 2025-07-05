@@ -84,10 +84,21 @@ public class RespuestaController {
 
         boolean actualizado = respuestaService.calificarRespuesta(idRespuesta, calificacionRequestDTO.getPuntuacion());
 
-        if(actualizado){
+        if (actualizado) {
             return ResponseEntity.ok("Puntuación actualizada correctamente.");
-        }else{
+        } else {
             return ResponseEntity.badRequest().body("No se pudo actualizar la puntuación.");
         }
+    }
+
+    /**
+     * *Obtiene todas las respuestas de los participantes.
+     * 
+     * @return Lista de RespuestaDTO
+     */
+    @GetMapping("")
+    public ResponseEntity<List<RespuestaDTO>> getTodasLasRespuestas() {
+        List<RespuestaDTO> respuestas = respuestaService.getTodasLasRespuestas();
+        return ResponseEntity.ok(respuestas);
     }
 }

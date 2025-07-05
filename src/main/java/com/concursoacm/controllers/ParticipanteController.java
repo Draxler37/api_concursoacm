@@ -212,4 +212,19 @@ public class ParticipanteController {
         List<ParticipanteDTO> resultado = participanteService.buscarParticipantes(nombre, idPais, idEquipo, idRegion);
         return ResponseEntity.ok(resultado);
     }
+
+    /**
+     * *Busca los participantes que no tienen equipo asignado(null en tabla=Sin Equipo) por el idpais.
+     * 
+     * @param idPais ID del país para filtrar los participantes.
+     * @return Lista de ParticipanteDTO sin equipo asignado.
+     */
+    @GetMapping("/sin-equipo/pais/{idPais}")
+    public ResponseEntity<List<ParticipanteDTO>> getParticipantesSinEquipoPorPais(@PathVariable int idPais) {
+        List<ParticipanteDTO> participantesSinEquipo = participanteService.getParticipantesSinEquipoPorPais(idPais);
+        if (participantesSinEquipo.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(participantesSinEquipo);
+    }
 }
